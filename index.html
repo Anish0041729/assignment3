@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Core Java to JavaScript - Library Manager</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <img src="assets/library-mark.svg" alt="" width="44" height="44">
+        <div>
+          <p class="eyebrow">Core Java project converted to JavaScript</p>
+          <h1>Library Manager</h1>
+        </div>
+      </div>
+      <div class="header-actions" aria-label="Project actions">
+        <button class="icon-button" id="seedBtn" type="button" title="Load sample records" aria-label="Load sample records">
+          <span aria-hidden="true">+</span>
+        </button>
+        <button class="icon-button" id="resetBtn" type="button" title="Reset saved data" aria-label="Reset saved data">
+          <span aria-hidden="true">R</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="summary-band" aria-label="Library summary">
+        <div>
+          <span class="summary-value" id="totalBooks">0</span>
+          <span class="summary-label">Books</span>
+        </div>
+        <div>
+          <span class="summary-value" id="availableBooks">0</span>
+          <span class="summary-label">Available</span>
+        </div>
+        <div>
+          <span class="summary-value" id="issuedBooks">0</span>
+          <span class="summary-label">Issued</span>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <form class="editor-panel" id="bookForm">
+          <h2 id="formTitle">Add Book</h2>
+          <input id="editingId" type="hidden">
+
+          <label>
+            <span>Book ID</span>
+            <input id="bookId" name="bookId" type="text" required maxlength="12" autocomplete="off">
+          </label>
+
+          <label>
+            <span>Title</span>
+            <input id="title" name="title" type="text" required maxlength="70" autocomplete="off">
+          </label>
+
+          <label>
+            <span>Author</span>
+            <input id="author" name="author" type="text" required maxlength="50" autocomplete="off">
+          </label>
+
+          <label>
+            <span>Category</span>
+            <select id="category" name="category" required>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Literature">Literature</option>
+              <option value="Reference">Reference</option>
+            </select>
+          </label>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">Save Book</button>
+            <button class="text-button" id="cancelEditBtn" type="button">Cancel</button>
+          </div>
+
+          <p class="message" id="message" role="status" aria-live="polite"></p>
+        </form>
+
+        <section class="list-panel" aria-label="Book records">
+          <div class="list-toolbar">
+            <label class="search-field">
+              <span>Search</span>
+              <input id="searchInput" type="search" placeholder="Title, author, ID, category">
+            </label>
+            <div class="segmented" aria-label="Book status filter">
+              <button class="segment active" type="button" data-filter="all">All</button>
+              <button class="segment" type="button" data-filter="available">Available</button>
+              <button class="segment" type="button" data-filter="issued">Issued</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Book</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="conversion-band" aria-label="Conversion notes">
+        <h2>Conversion Map</h2>
+        <div class="conversion-grid">
+          <article>
+            <h3>Book.java</h3>
+            <p>Book fields and methods became a JavaScript <code>Book</code> class.</p>
+          </article>
+          <article>
+            <h3>LibraryService.java</h3>
+            <p>ArrayList operations became array methods such as <code>find</code>, <code>filter</code>, and <code>map</code>.</p>
+          </article>
+          <article>
+            <h3>Main.java</h3>
+            <p>Scanner menu input became HTML form controls and button events.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
